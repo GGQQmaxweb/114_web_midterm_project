@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!running) return;
         requestAnimationFrame(gameLoop);
         scoreDisplay.textContent = `分數: ${snake.length - 3}`;
-        if (++count < 35) return;
+        if (++count < 20) return;
         count = 0;
         isInputLocked = false;
 
