@@ -1,8 +1,46 @@
- canvas {
+ /* canvas {
      background: #000;
      display: block;
      margin: 50px auto;
- }
+ } */
+  /* style.css */
+
+#imageOverlay {
+    position: absolute;
+     top: 0;
+    left: 0;
+    width: 100%;  
+    height: 100%; 
+    
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 200px;
+    pointer-events: none;
+    
+    opacity: 0; 
+    transition: opacity 1s ease-in-out;
+    z-index: 10;
+}
+
+
+
+#gameCanvas {
+    position: relative; 
+
+}
+
+
+
+ canvas {
+    background: #000;
+    display: block;
+    margin: 50px auto;
+
+    width: 100%;
+    height: auto;
+    max-width: 440px;
+}
 
  body {
      text-align: center;
