@@ -11,13 +11,26 @@
 
 <body>
   <h1 class="mt-4 mb-3">貪吃蛇遊戲</h1>
+  <div id="settingsMenu" class="container" style="max-width: 440px;">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <label for="colorThemePicker" class="form-label">選擇配色主題</label>
+        <select class="form-select" id="colorThemePicker">
+          <option value="#32CD32,#FF0000" selected>綠蛇 / 紅果</option>
+          <option value="#007BFF,#FFC107">藍蛇 / 黃果</option>
+          <option value="#FFFFFF,#800080">白蛇 / 紫果</option>
+          <option value="#FFA500,#8B4513">橘蛇 / 棕果</option>
+        </select>
+      </div>
+    </div>
+  </div>
   <button id="startBtn" class="btn btn-primary">開始遊戲</button>
   <p id="score" class="lead"></p>
 
   <canvas id="gameCanvas" width="440 " height="440" style="display: none;">
 
   </canvas>
-  <div id="imageOverlay"> <img src="image/image.png" alt="控制提示">
+  <div id="imageOverlay"> <img src="asset/image.png" alt="控制提示">
   </div>
   <p>使用方向鍵控制蛇的移動</p>
   <section id="scoreSumitForm" class="py-5" style="display: none;">
@@ -46,5 +59,4 @@
   </section>
   <script src="script.js"></script>
 </body>
-
 </html>
