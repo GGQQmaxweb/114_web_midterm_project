@@ -21,9 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let waitingForKey = false;
 
     function loadLastInput() {
-        const savedName = localStorage.getItem('playerName');
-        const savedEmail = localStorage.getItem('playerEmail');
-
+        const lastInput = localStorage.getItem('lastInput');
+        if (!lastInput) return;
+        const { name: savedName, email: savedEmail } = JSON.parse(lastInput);
+        
         if (savedName) {
             nameInput.value = savedName;
         }
@@ -33,16 +34,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     scoreSumitForm.addEventListener('submit', (e) => {
         e.preventDefault();
-
+        const score = snake.length - 3;
         const playerName = nameInput.value;
         const playerEmail = emailInput.value;
-
-
-        localStorage.setItem('playerName', playerName);
-        localStorage.setItem('playerEmail', playerEmail);
-
+        
+        localStorage.setItem('lastInput', JSON.stringify({ name: playerName, email: playerEmail }));
+        
+        localStorage.setItem(playerName, JSON.stringify({ name: playerName, score: score }));
         alert(`分數已記錄！\n姓名: ${playerName}\nEmail: ${playerEmail}`);
-
     });
 
     function getRandomFood() {
