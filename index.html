@@ -35,7 +35,6 @@
   <p>使用方向鍵控制蛇的移動</p>
   <section id="scoreSumitForm" class="py-5" style="display: none;">
     <div class="container">
-      <h2 class="text-center mb-5">score board</h2>
       <div class="row">
         <div class="col-lg-6 mx-auto">
           <form>
@@ -52,10 +51,14 @@
             </div>
             <button type="submit" class="btn btn-primary w-100">送出</button>
           </form>
+          <br>
           <button onclick="window.location.reload();" class="btn btn-primary w-100">重玩</button>
         </div>
       </div>
     </div>
+    <hr>
+    <h2 class="text-center mb-5">Score Board</h2>
+    <div id="scoreBoard" class="table-responsive"></div>
   </section>
   <script src="script.js"></script>
 </body>
