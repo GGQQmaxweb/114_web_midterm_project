@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const emailInput = document.getElementById('email');
     const settingsMenu = document.getElementById('settingsMenu');
     const colorThemePicker = document.getElementById('colorThemePicker');
+    const difficultyPicker = document.getElementById('difficultyPicker');
     let count = 0;
     let snake = [{ x: 120, y: 220 }, { x: 100, y: 220 }, { x: 80, y: 220 }];
     let dx = grid;
@@ -40,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         localStorage.setItem('lastInput', JSON.stringify({ name: playerName, email: playerEmail }));
 
-        localStorage.setItem("player_" + playerName, JSON.stringify({ name: playerName, score: score }));
+        localStorage.setItem(difficultyPicker.value+"_player_" + playerName, JSON.stringify({ name: playerName, score: score }));
         alert(`分數已記錄！\n姓名: ${playerName}\nEmail: ${playerEmail}`);
         loadScoreBoard();
     });
@@ -51,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const key = localStorage.key(i);
 
             // Optional: only get keys that start with "player_"
-            if (key.startsWith("player_")) {
+            if (key.startsWith(difficultyPicker.value+"_player_")) {
                 const player = JSON.parse(localStorage.getItem(key));
                 players.push(player);
             }
@@ -94,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!running) return;
             requestAnimationFrame(gameLoop);
             scoreDisplay.textContent = `分數: ${snake.length - 3}`;
-            if (++count < 20) return;
+            if (++count < difficultyPicker.value) return;
             count = 0;
             if (inputQueue.length > 0) {
 
