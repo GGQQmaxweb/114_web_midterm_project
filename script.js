@@ -36,13 +36,40 @@ document.addEventListener('DOMContentLoaded', () => {
     scoreSumitForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const score = snake.length - 3;
-        const playerName = nameInput.value;
-        const playerEmail = emailInput.value;
+        const playerName = nameInput.value.trim();
+        const playerEmail = emailInput.value.trim();
+
+        if (!playerName) {
+            alert('請輸入姓名以記錄分數。');
+            return;
+        }
+
+        const key = `${difficultyPicker.value}_player_${playerName}`;
+        const existing = localStorage.getItem(key);
+        let shouldSave = true;
+
+        if (existing) {
+            try {
+            const parsed = JSON.parse(existing);
+            const existingScore = Number(parsed.score || 0);
+            if (existingScore >= score) {
+                shouldSave = false;
+            }
+            } catch (err) {
+            // if parse fails, allow overwrite
+            shouldSave = true;
+            }
+        }
 
         localStorage.setItem('lastInput', JSON.stringify({ name: playerName, email: playerEmail }));
 
-        localStorage.setItem(difficultyPicker.value+"_player_" + playerName, JSON.stringify({ name: playerName, score: score }));
-        alert(`分數已記錄！\n姓名: ${playerName}\nEmail: ${playerEmail}`);
+        if (shouldSave) {
+            localStorage.setItem(key, JSON.stringify({ name: playerName, score: score }));
+            alert(`分數已記錄！\n姓名: ${playerName}\nEmail: ${playerEmail}\n分數: ${score}`);
+        } else {
+            alert(`現有分數較高或相同，未更新。\n姓名: ${playerName}\n現有分數: ${existing ? JSON.parse(existing).score : 'N/A'}\n本次分數: ${score}`);
+        }
+
         loadScoreBoard();
     });
     function loadScoreBoard() {
