@@ -166,9 +166,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 colorThemePicker.value = savedTheme;
             }
         }
+        function loadDifficulty() {
+            const savedDifficulty = localStorage.getItem('selectedDifficultyValue');
+            if (savedDifficulty) {
+                difficultyPicker.value = savedDifficulty;
+            }
+        }
         startBtn.addEventListener('click', () => {
             const selectedTheme = colorThemePicker.value;
+            const difficulty = difficultyPicker.value;
             localStorage.setItem('selectedThemeValue', selectedTheme);
+            localStorage.setItem('selectedDifficultyValue', difficulty);
 
             const colors = selectedTheme.split(',');
 
@@ -209,4 +217,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         loadLastInput();
         loadLastTheme();
+        loadDifficulty()
     });
