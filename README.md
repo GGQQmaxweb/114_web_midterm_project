@@ -93,15 +93,5 @@
 * **style.css**
 * 圖片資源位於 `/asset/image/`
 
-（你可將這段保留或移除）
 
----
-
-如果你需要我把 README 加上：
-✅ 專案截圖
-✅ tech badge（HTML / CSS / JS）
-✅ Emoji 強化版
-✅ 課程規範格式版
-
-都可以告訴我，我能再幫你調整！
 
